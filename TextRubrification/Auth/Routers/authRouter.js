@@ -3,8 +3,7 @@ const contoller = require("../Controllers/authController");
 
 const router = new Router();
 
-router.post("/authorize", contoller.generateT);
+router.post("/login", contoller.login);
 router.get("/getAdmins", authMiddleware, contoller.getAdmins);
-router.post("/remove", contoller.remove);
 
 module.exports = router;

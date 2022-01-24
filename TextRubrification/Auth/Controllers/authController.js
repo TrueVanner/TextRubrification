@@ -6,19 +6,16 @@ class AuthController {
 
     async getAdmins(req, res, next) {
         try {
-            const result = await authService.getUsers();
+            const result = await authService.getAdmins();
             return res.json({result});
         } catch (e) {next(e);}
     }
 
-    async register(req, res, next) {
+    async login(req, res, next) {
         try {
             const {login, pass} = req.body;
-            const payload = new UserDTO(login, pass);
-
-            const result = await authService.register(payload);
-
-            return res.json(result);
+            const result = await authService.login(new UserDTO(login, pass));
+            return res.json({result});
         } catch (e) {next(e);}
     }
 
