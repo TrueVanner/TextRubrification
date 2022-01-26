@@ -1,5 +1,6 @@
 // How to call console
 // Logger.<TYPE OF ERROR>(<PARAMS>);
+//asd
 
 // Error builder
 // TIME | TYPE | console log
