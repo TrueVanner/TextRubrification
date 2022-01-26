@@ -19,6 +19,7 @@ class AuthService{
 
         const user = await userModel.create({
             login: userDTO.login,
-            password: userDTO.password,
+            password: userDTO.password
+        })
     }
 }
