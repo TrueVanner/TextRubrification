@@ -1,5 +1,5 @@
 const authService = require("../Services/authService.js");
-const UserDTO = require("../DTOs/userDTO");
+const UserDTO = require("../../../Models and DTOs/userDTO");
 const tokenService = require("../Services/tokenService.js");
 
 class AuthController {
