@@ -4,32 +4,48 @@ const userModel = require("../Models/userModel");
 
 class AuthService{
     async addUser(userDTO){
+        const loginCandidate = await userModel.findOne({login : userDTO.login})
 
-        const candidate = await userModel.find({login : userDTO.login});
-       
-        if(candidate){
-            throw new Error('There is user with such login')
+        if(loginCandidate){
+            throw new Error('|DB ERORR| USER WITH SUCH LOGIN EXISTS');
         }
 
-        return userDTO;
+        const user = await userModel.create({login: userDTO.login,password: userDTO.password, admin : false});
+
+        return {
+            isAdded : true,
+            user: {login: userDTO.login,password: userDTO.password,nickname: userDTO.nickname}
+        };
+        
     }
-    
+
     async deleteUser(userDTO){
 
-        const candidate = await userModel.find({login : userDTO.login,password : userDTO.password});
+        const candidate = await userModel.findOne({login : userDTO.login,password : userDTO.password,admin : false});
 
         if(!candidate){
-            throw new Error('There is no such user');
+            throw new Error('|DB ERORR| THERE IS NO USER TO DELETE');
         }
         
-        userModel.deleteOne({login : userDTO.login,password : userDTO.password});
+        const user = await userModel.deleteOne({login : userDTO.login,password : userDTO.password});
         
-        return {"login" : candidate.login,"password" : candidate.password};
+        return {
+            isDeleted : true,
+            user: {login: userDTO.login,password: userDTO.password,nickname: userDTO.nickname}
+        };
     }
 
     async findUser(userDTO){
-        return userModel.findOne({login : userDTO.login, password : userDTO.password});
+        const user =  userModel.findOne({login : userDTO.login, password : userDTO.password,admin : false});
+
+        if(!user){
+            throw new Error('|DB ERORR| THERE IS NO SUCH USER');
+        }
+
+        return user;
     }
+
+    
 
     
 }

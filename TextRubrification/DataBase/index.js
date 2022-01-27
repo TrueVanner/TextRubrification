@@ -1,23 +1,27 @@
-require("dotenv").config()
-const express = require('express')
-const mongoose = require('mongoose')
+require("dotenv").config();
+const express = require('express');
+const mongoose = require('mongoose');
+const Logger = require('../../TextRubrification/DataBase/Logger')
 
 const authRouter = require('./Routers/authRouter')
 const dataRouter = require('./Routers/dataRouter')
 
 const errorMiddleware = require("./Middlewares/errorMiddleware")
+const authRouter = require('./Routers/authRouter');
+const errorMiddleware = require("./Middlewares/errorMiddleware");
 
 const PORT = process.env.PORT
 const URL = process.env.DB_URL
 
-const app = express()
+const app = express();
 
-app.use(express.json())
+app.use(express.json());
 
 app.use('/auth',authRouter)
 app.use('/data',dataRouter)
+app.use('/auth',authRouter);
 
-app.use(errorMiddleware)
+app.use(errorMiddleware);
 
 const start = async () =>{
     try{
@@ -28,11 +32,11 @@ const start = async () =>{
         })
 
         app.listen(PORT, ()=> {
-            console.log('Server started on port :' + PORT)
+            Logger.serverStart(PORT);
         })
 
     }catch(e){
-        console.log(e)
+        Logger.error(e);
     }
 }
-start()
+start();
