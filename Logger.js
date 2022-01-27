@@ -1,6 +1,5 @@
-// How to call console
+// How to call logger
 // Logger.<TYPE OF ERROR>(<PARAMS>);
-//asd
 
 // Error builder
 // TIME | TYPE | console log
@@ -65,13 +64,15 @@ class Logger{
 
         console.log(`\n\x1b[37m${date}-${month}-${year} ${hour}:${minutes}:${seconds} | INFO | ${infoAboutError}\n\x1b[0m`);
     }
-}
 
-// Testing...
-Logger.error("Bro this code has fatal error");
-Logger.warn("Bro this code has scary warning");
-Logger.info("Bro this output is important");
-Logger.debug("Bro this output is trash");
+    // TEST 4 types of logs
+    static tester(){
+        Logger.error("Failed connection to DataBase");
+        Logger.warn("Connection to DataBase is too long");
+        Logger.info("New admin added");
+        Logger.debug("Code works up to this place");
+    }
+}
 
 // Export 'Logger' to project
 module.exports = Logger;
