@@ -3,6 +3,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 
 const authRouter = require('./Routers/authRouter')
+const dataRouter = require('./Routers/dataRouter')
 
 const errorMiddleware = require("./Middlewares/errorMiddleware")
 
@@ -14,6 +15,7 @@ const app = express()
 app.use(express.json())
 
 app.use('/auth',authRouter)
+app.use('/data',dataRouter)
 
 app.use(errorMiddleware)
 
