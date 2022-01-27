@@ -27,17 +27,6 @@ class DataContorller{
         }
     }
 
-    async getTopicNames(req, res, next){
-        try {
-            const result = await dataService.getTopicNames();
-
-            return res.json({result})
-
-        } catch (e) {
-            return e;
-        }
-    }
-
     async addTopic(req,res,next){
         try{
             const {name, word} = req.body;
@@ -102,19 +91,6 @@ class DataContorller{
 
             return res.json({result});
 
-        } catch (e) {
-            next(e);
-        }
-    }
-
-    async updateWord(req, res, next){
-        try {
-            const {name, word, newWord} = req.body;
-
-            const result = dataService.updateWord(name, word, newWord);
-
-            return res.json({result});
-        
         } catch (e) {
             next(e);
         }
