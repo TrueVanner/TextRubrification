@@ -79,7 +79,7 @@ class Logger{
         console.log(`\n\x1b[36m${date}-${month}-${year} ${hour}:${minutes}:${seconds} | SERVER | PORT:${PORT}\n\x1b[0m`);
     }
 
-    // TEST 4 types of logs
+    // TEST 5 types of logs
     static tester(){
         Logger.error("Failed connection to DataBase");
         Logger.warn("Connection to DataBase is too long");
@@ -89,5 +89,5 @@ class Logger{
     }
 }
 
-// Export 'Logger' to project
+// Export 'Logger' to project   
 module.exports = Logger;
