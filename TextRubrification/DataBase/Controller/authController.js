@@ -46,6 +46,34 @@ class AuthController{
         }
     }
 
+    async deleteAdmin(req,res,next){
+        try{
+            const {login, password} = req.body
+            const payload = new UserDTO(login,password)
+
+            const result = await userService.deleteAdmin(payload);
+            
+            return res.json({result});
+
+        }catch(e){
+            next(e)
+        }
+    }
+
+    async addAdmin(req,res,next){
+        try{
+            const {login, password} = req.body
+            const payload = new UserDTO(login,password)
+
+            const result = await userService.addAdmin(payload);
+            
+            return res.json({result});
+
+        }catch(e){
+            next(e)
+        }
+    }
+
 }
 
 module.exports = new AuthController();

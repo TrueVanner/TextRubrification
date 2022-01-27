@@ -14,7 +14,7 @@ class AuthService{
 
         return {
             isAdded : true,
-            user: {login: userDTO.login,password: userDTO.password,nickname: userDTO.nickname}
+            user: {login: userDTO.login,password: userDTO.password,nickname: userDTO.nickname,admin : false}
         };
         
     }
@@ -31,7 +31,7 @@ class AuthService{
         
         return {
             isDeleted : true,
-            user: {login: userDTO.login,password: userDTO.password,nickname: userDTO.nickname}
+            user: {login: userDTO.login,password: userDTO.password,nickname: userDTO.nickname,admin : false}
         };
     }
 
@@ -45,8 +45,32 @@ class AuthService{
         return user;
     }
 
-    
+    async addAdmin(userDTO){
+        const loginCandidate = await userModel.findOne({login : userDTO.login})
 
+        if(loginCandidate){
+            throw new Error('|DB ERORR| USER WITH SUCH LOGIN EXISTS');
+        }
+
+        const user = await userModel.create({login: userDTO.login,password: userDTO.password, admin : true});
+
+        return {
+            isAdded : true,
+            user: {login: userDTO.login,password: userDTO.password,nickname: userDTO.nickname,admin : true}
+        };
+        
+    }
+
+
+    async deleteAdmin(userDTO){
+        const user =  userModel.findOne({login : userDTO.login, password : userDTO.password,admin : true});
+
+        if(!user){
+            throw new Error('|DB ERORR| THERE IS NO SUCH USER');
+        }
+
+        return user;
+    }
     
 }
 

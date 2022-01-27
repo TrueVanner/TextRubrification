@@ -8,7 +8,6 @@ const dataRouter = require('./Routers/dataRouter')
 
 const errorMiddleware = require("./Middlewares/errorMiddleware")
 const authRouter = require('./Routers/authRouter');
-const errorMiddleware = require("./Middlewares/errorMiddleware");
 
 const PORT = process.env.PORT
 const URL = process.env.DB_URL
@@ -19,7 +18,6 @@ app.use(express.json());
 
 app.use('/auth',authRouter)
 app.use('/data',dataRouter)
-app.use('/auth',authRouter);
 
 app.use(errorMiddleware);
 
