@@ -14,14 +14,13 @@ class AuthController {
         try {
             const {name, words} = req.body;
 
-            const result = await authService.register(payload);
-
+            //const result = await authService.register(new TopicDTO(name: name, words: words));
             return res.json(result);
         } catch (e) {next(e);}
     }
     async remove(req, res, next) {
         try {
-            const {login} = req.body;
+            const {name} = req.body;
             const result = await authService.remove(login);
 
             return res.json(result);
