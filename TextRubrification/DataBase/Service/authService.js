@@ -23,7 +23,7 @@ class AuthService{
     
     async deleteUser(userDTO){
 
-        const candidate = await userModel.find({login : userDTO.login,password : userDTO.password});
+        const candidate = await userModel.findOne({login : userDTO.login,password : userDTO.password});
 
         if(!candidate){
             throw new Error('|DB ERORR| THERE IS NO USER TO DELETE');
