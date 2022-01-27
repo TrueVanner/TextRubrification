@@ -2,7 +2,7 @@
 // Logger.<TYPE OF ERROR>(<PARAMS>);
 
 // Error builder
-// TIME | TYPE | console log
+// <TYME> | <TYPE> | <PARAMS>
 
 // Error example
 // 22-01-2022 23:48:30 | ERROR | Failed connection to DataBase
