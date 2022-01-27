@@ -8,7 +8,7 @@ class DataService{
         const candidate = await topicModel.findOne({name: topicName});
 
         if(!candidate){
-            throw new Error('This topicdoes not exist');
+            throw new Error('This topic does not exist');
         }
 
         return candidate;
@@ -40,7 +40,7 @@ class DataService{
             throw new Error('Current topic does exist')
         }
 
-        const topic = await topicModel.create({name: topicDTO.name, words: topicDTO.words})
+        const topic = await topicModel.create({name: topicDTO.name, words: topicDTO.word})
         
 
         return {

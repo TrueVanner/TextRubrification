@@ -7,7 +7,6 @@ const authRouter = require('./Routers/authRouter')
 const dataRouter = require('./Routers/dataRouter')
 
 const errorMiddleware = require("./Middlewares/errorMiddleware")
-const authRouter = require('./Routers/authRouter');
 
 const PORT = process.env.PORT
 const URL = process.env.DB_URL
