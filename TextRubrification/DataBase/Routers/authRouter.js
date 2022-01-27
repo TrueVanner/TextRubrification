@@ -1,5 +1,5 @@
 const Router = require('express').Router
-const controller = require('../Controlers/authController')
+const controller = require("../Controller/authController")
 
 const router = new Router()
 router.post('/addUser',controller.addUser)

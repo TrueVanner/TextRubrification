@@ -1,12 +1,12 @@
 const UserDTO = require("../DTO/userDTO");
-const userModel = require('../Models/usersModel');
-const tokenService = require('../Service/tokenService');
+const userModel = require("../Models/userModel");
 
 
 class AuthService{
     async addUser(userDTO){
 
         const candidate = await userModel.find({login : userDTO.login});
+       
         if(candidate){
             throw new Error('There is user with such login')
         }
@@ -16,10 +16,15 @@ class AuthService{
     
     async deleteUser(userDTO){
 
-        const candidate = await userModel.find({login : userDTO.login});
-        userModel.deleteOne({login : userDTO.login});
+        const candidate = await userModel.find({login : userDTO.login,password : userDTO.password});
+
+        if(!candidate){
+            throw new Error('There is no such user');
+        }
         
-        return candidate;
+        userModel.deleteOne({login : userDTO.login,password : userDTO.password});
+        
+        return {"login" : candidate.login,"password" : candidate.password};
     }
 
     async findUser(userDTO){

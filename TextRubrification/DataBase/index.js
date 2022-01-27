@@ -1,11 +1,10 @@
-require('dotenv').config()
+require("dotenv").config()
 const express = require('express')
 const mongoose = require('mongoose')
 
 const authRouter = require('./Routers/authRouter')
 
-
-const errorMiddleware = require('./Middlewares/errorMiddleware')
+const errorMiddleware = require("./Middlewares/errorMiddleware")
 
 const PORT = process.env.PORT
 const URL = process.env.DB_URL
