@@ -8,5 +8,6 @@ router.post("/register", contoller.register);
 router.post("/login", contoller.login);
 router.get("/getAdmins", adminMiddleware, contoller.getAdmins);
 router.get("/addAdmin", adminMiddleware, contoller.addAdmin);
+router.get("/validateToken", contoller.validateT);
 
 module.exports = router;
