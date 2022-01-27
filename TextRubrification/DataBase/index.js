@@ -1,16 +1,13 @@
 require("dotenv").config();
 const express = require('express');
 const mongoose = require('mongoose');
+const Logger = require('../../TextRubrification/DataBase/Logger')
 
 const authRouter = require('./Routers/authRouter');
 const errorMiddleware = require("./Middlewares/errorMiddleware");
 
-const PORT = process.env.PORT;
-const URL = process.env.DB_URL;
-
-
 const PORT = process.env.PORT
-const URL = process.env.DB_URL2
+const URL = process.env.DB_URL
 
 const app = express();
 
