@@ -1,0 +1,15 @@
+{
+  "name": "topicmanager",
+  "version": "1.0.0",
+  "description": "Works with topics",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "VannerName",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2",
+    "dotenv": "^14.3.2"
+  }
+}
