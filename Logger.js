@@ -62,7 +62,7 @@ class Logger{
         let minutes = now.getMinutes();
         let seconds = now.getSeconds();
 
-        console.log(`\n\x1b[37m${date}-${month}-${year} ${hour}:${minutes}:${seconds} | INFO | ${infoAboutDebug}\n\x1b[0m`);
+        console.log(`\n\x1b[37m${date}-${month}-${year} ${hour}:${minutes}:${seconds} | DEBUG | ${infoAboutDebug}\n\x1b[0m`);
     }
 
     // SERVER log that shows 
